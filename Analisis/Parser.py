@@ -1,4 +1,5 @@
-
+from Reservadas import PR
+from Token import Token
 class Parser:
     def __init__(self):
         self.tokens = []
