@@ -27,22 +27,11 @@ def generarErrores():
     
     
 def generar():
-    for i in range(len(figuras)):
-        figuras[i].generarImagen("MIRRORN") 
-        figuras[i].generarImagen("MIRRORX")
-        figuras[i].generarImagen("MIRRORY")
-        figuras[i].generarImagen("MIRRORD")
     MessageBox.showinfo(title="Generar",message="Exito")
     
 
 def imagen():
-    titulo =askopenfilename(filetypes = (("Imagenes", "*.jpg"), ("All files", "*")))
-    img = Image.open(titulo)
-    new_img = img.resize((500,300))
-    render = ImageTk.PhotoImage(new_img)
-    ing1 = Label(ventana, image=render)
-    ing1.image = render
-    ing1.place(x=10,y=30)
+    print("Imagen")
 
 def salirAplicacion():
     salir = messagebox.askquestion("Salir", "¿Desea salir?")
@@ -55,10 +44,10 @@ def salirAplicacion():
 if __name__ == "__main__":
     
     ventana = Tk()
-    ventana.geometry("450x675+300+10")
+    ventana.geometry("450x600+300+10")
     ventana.title("Menu")
     ventana.iconbitmap("img\python_94570.ico")
-    fondo = PhotoImage(file="img\Pin-en-Movimiento.gif")
+    fondo = PhotoImage(file="img\Font.gif")
     fondo1= Label(ventana, image=fondo).place(x=0,y=0,relwidth=1,relheight=1)
 
     barraMenu=Menu(ventana)
