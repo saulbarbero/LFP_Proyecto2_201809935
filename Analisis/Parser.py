@@ -18,7 +18,7 @@ class Parser:
             x = data[i]
             if(estado==0):
                 
-                if(x == '@' or x == '=' or x == ';' or x == ',' or x== '{'  or x == '}'  or x == '['  or x == ']' ): #Ignorar
+                if(x == '=' or x == ',' or x== '{'  or x == '}'  or x == '['  or x == ']' ): #Ignorar
                     t = Token(PR.SYMBOL,x,fila,columna)
                     self.tokens.append(t)
                     pass  
@@ -30,19 +30,20 @@ class Parser:
                 elif(x.isalpha()):
                     aux +=x
                     estado = 1
-                elif(x.isdigit()):
-                    aux +=x
-                    estado = 3
                 elif(x == '"'):
                     aux+=x
                     estado = 2
+                elif(x.isdigit()):
+                    aux +=x
+                    estado = 3
                 elif(x == '#'):
                     estado = 4
                     aux+=x
-                else:
+                elif(x == "'"):
+                    estado = 5
                     aux+=x
-                    err = Error(aux,fila,columna)
-                    self.lista_errores(err)
+                else:
+                    
                     aux = ''
                     pass
             elif (estado ==1): #ID 
@@ -76,12 +77,23 @@ class Parser:
                     estado = 0
                     i-=1
                     aux = ''
-            elif(estado==4): #Codigo Hexadecimal
-                if(x.isalpha() or x.isdigit()):
+            elif(estado==4): #Comentario
+                if(x=='\n'):
                     aux +=x
                     columna+=1
                 else:
-                    t = Token(PR.CODIGO,aux,fila,columna)
+                    t = Token(PR.COMENTARIO,aux,fila,columna)
+                    self.tokens.append(t)
+                    estado = 0
+                    i-=1
+                    columna-=1
+                    aux = ''
+            elif(estado==5): #multi
+                if(x=="'"):
+                    aux +=x
+                    columna+=1
+                else:
+                    t = Token(PR.MULTI,aux,fila,columna)
                     self.tokens.append(t)
                     estado = 0
                     i-=1

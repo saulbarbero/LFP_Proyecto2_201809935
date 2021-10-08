@@ -1,7 +1,9 @@
 from enum import Enum
 class PR(Enum):
-    ID=1 #ancho
+    CADENA=1 #"CC*"
     NUM =2 #1
-    CADENA= 3 #"Cadena"
-    CODIGO= 4 #000000
-    SYMBOL = 5 #@@@@
+    ID= 3 #CC*
+    COMENTARIO= 4 #Comentario
+    MULTI = 5 #'''Multilinea'''
+    DECI = 6 #10.00
+    SYMBOL = 7 
