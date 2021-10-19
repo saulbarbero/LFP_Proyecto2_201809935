@@ -6,4 +6,5 @@ class PR(Enum):
     COMENTARIO= 4 #Comentario
     MULTI = 5 #'''Multilinea'''
     DECI = 6 #10.00
-    SYMBOL = 7 
+    SYMBOL = 7
+    FUNCION = 8
