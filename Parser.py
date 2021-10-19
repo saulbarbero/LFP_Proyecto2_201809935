@@ -1,12 +1,14 @@
-from Reservadas import PR
 from Token import Token
+from Reservadas import PR
+
 class Parser:
     def __init__(self):
         self.tokens = []
         self.lista_errores = []
 
         
-
+    def imprimir(self):
+        print("En parser")
 
     def obtenerData(self,data): 
         estado = 0 

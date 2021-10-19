@@ -16,3 +16,23 @@ Registros = [
 Comentarios
 multilinea
 '''
+imprimir("Reporte de ");
+imprimir("Abarroteria");
+
+imprimirln("Reporte de ");
+imprimirln("Abarroteria");
+
+conteo();
+
+promedio("stock");
+
+contarsi("stock", 0);
+contarsi("stock", 1);
+contarsi("stock", 2);
+
+sumar(stock);
+datos();
+max("precio_venta");
+min("precio_compra");
+
+exportarReporte("Reporte HTML de abarroteria");
