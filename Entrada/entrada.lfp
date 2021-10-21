@@ -13,7 +13,8 @@ Registros = [
 ]
 
 '''
-Comentarios
+Comen 
+tarios
 multilinea
 '''
 imprimir("Reporte de ");

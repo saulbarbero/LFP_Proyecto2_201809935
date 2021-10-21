@@ -161,6 +161,10 @@ if __name__ == "__main__":
 
     scrolledtext1=st.ScrolledText(ventana, width=80, height=20)
     scrolledtext1.grid(column=0,row=0, padx=10, pady=10)
+    scrolledtext2=st.ScrolledText(ventana, width=47, height=20)
+    scrolledtext2.grid(column=1,row=0, padx=10, pady=10)
+    scrolledtext2.insert(1.0,"Prueba")
+    scrolledtext2.configure(state='disabled')
 
     ventana.mainloop()
   
