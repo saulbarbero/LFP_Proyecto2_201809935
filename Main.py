@@ -17,8 +17,10 @@ from tkinter import messagebox as mb
 from Reservadas import PR
 
 from Reporte import Reporte
+from Clave import Clave
 p = Parser()
 r = Reporte()
+claves = []
 
 
 
@@ -54,7 +56,23 @@ def prueba ():
         MessageBox.showerror(title="Error",message="Error de lectura")
         
 
+def llenarClave(lista):
+        titulo = ''
+        
+        i = 0
+        end = len(lista)
+        while i< end:
+            token = lista[i]
+            if token.lexema == PR.CADENA :
+                titulo = token.lexema
+            
 
+            
+            elif(titulo!='' ):
+                    claves.append(Clave(titulo))
+                    titulo = ''
+                    
+            i+=1
 
 
 def cargarArchivos():
