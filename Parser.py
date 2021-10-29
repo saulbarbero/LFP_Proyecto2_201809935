@@ -53,14 +53,14 @@ class Parser:
                             i+=2
                         else:
                             x=0
-                            e = Error("Error lexico: SYMBOL",fila,columna)
+                            e = Error("Error lexico: "+str(x),fila,columna)
                             self.lista_errores.append(e)
                     except:
                         x=0
-                        e = Error("Error lexico: SYMBOL",fila,columna)
+                        e = Error("Error lexico: "+str(x),fila,columna)
                         self.lista_errores.append(e)
                 else:
-                    e = Error("Error lexico: SYMBOL",fila,columna)
+                    e = Error("Error lexico: "+str(x),fila,columna)
                     self.lista_errores.append(e)
                     aux = ''
                     pass
@@ -128,7 +128,8 @@ class Parser:
                     #global reset
                     i = reset
                     x = data[i]
-                    #Error  
+                    e = Error("Error lexico: "+str(x),fila,columna)
+                    self.lista_errores.append(e)  
                     x=0
             elif(estado==7): #Cualquier numero decimal
                 if(x.isdigit()):
@@ -140,6 +141,10 @@ class Parser:
                     estado = 0
                     i-=1
                     aux = ''
+            else:
+                e = Error("Error lexico: "+str(x),fila,columna)
+                self.lista_errores.append(e)
+                
             i+=1
 
                 

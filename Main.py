@@ -56,23 +56,7 @@ def prueba ():
         MessageBox.showerror(title="Error",message="Error de lectura")
         
 
-def llenarClave(lista):
-        titulo = ''
-        
-        i = 0
-        end = len(lista)
-        while i< end:
-            token = lista[i]
-            if token.lexema == PR.CADENA :
-                titulo = token.lexema
-            
 
-            
-            elif(titulo!='' ):
-                    claves.append(Clave(titulo))
-                    titulo = ''
-                    
-            i+=1
 
 
 def cargarArchivos():
@@ -85,6 +69,17 @@ def cargarArchivos():
         x = p.tokens[i]
         print(x.lexema)
         i+=1
+
+    print("---------------")
+    print("---------------")
+    print("---------------")
+    print("---------------")
+    j = 0
+    size = len(p.lista_errores)
+    while(j<size):
+        x = p.lista_errores[j]
+        print(x.cadena)
+        j+=1
                 
 
 def escribir():
