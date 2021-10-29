@@ -57,15 +57,13 @@ def prueba ():
         MessageBox.showerror(title="Error",message="Error de lectura")
         
 
+s = Syntax(p.tokens)
 
 
 
 def cargarArchivos():
     prueba()
-    s = Syntax(p.tokens)
-    r.reporteToken(p.tokens)
-    r.reporteErrores(p.lista_errores)
-    r.reporteErroresSintactico(s.lista_erroresS)
+    
     scrolledtext2=st.ScrolledText(ventana, width=47, height=20)
     scrolledtext2.grid(column=1,row=0, padx=10, pady=10)
     aux=""
@@ -81,7 +79,7 @@ def cargarArchivos():
         aux+='''
 '''+str(x.lexema)+'''
             '''
-        print(x.lexema)
+        #print(x.lexema)
         i+=1
     
     aux+='''
@@ -94,8 +92,8 @@ def cargarArchivos():
     ---------------
     '''
     
-    print("---------------")
-    print("---------------")
+    #print("---------------")
+    #print("---------------")
   
     j = 0
     size = len(p.lista_errores)
@@ -108,7 +106,7 @@ def cargarArchivos():
         aux+='''
 '''+str(x.cadena)+'''
             '''
-        print(x.cadena)
+        #print(x.cadena)
         
         j+=1
         aux+='''
@@ -120,8 +118,8 @@ def cargarArchivos():
     aux+='''
     ---------------
     '''
-    print("---------------")
-    print("---------------")
+    #print("---------------")
+    #print("---------------")
     
     
     s.Analizar()
@@ -133,8 +131,8 @@ def cargarArchivos():
         aux+='''
 '''+str(e.cadena)+'''
             '''
-        print (e.cadena)
-    print("------------")
+        #print (e.cadena)
+    #print("------------")
     scrolledtext2.insert(tk.INSERT,aux)
     scrolledtext2.configure(state='disabled')
                 
@@ -164,6 +162,9 @@ def generarTokens():
 
 def generarErrores():
     r.reporteErrores(p.lista_errores)
+
+def generarErroresS():
+    r.reporteErroresSintactico(s.lista_erroresS)
     
     
 
@@ -203,6 +204,8 @@ if __name__ == "__main__":
     verReporte.add_command(label="Tokens",command=generarTokens)
     verReporte.add_separator()
     verReporte.add_command(label="Errores", command=generarErrores)
+    verReporte.add_separator()
+    verReporte.add_command(label="Errores Syntax", command=generarErroresS)
 
     
 
