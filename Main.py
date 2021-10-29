@@ -119,18 +119,10 @@ def generarErrores():
     r.reporteErrores(p.lista_errores)
     
     
-def generar():
-    pass
+
     
 
-def imagen():
-    titulo =askopenfilename(filetypes = (("Imagenes", "*.jpg"), ("All files", "*")))
-    img = Image.open(titulo)
-    new_img = img.resize((500,300))
-    render = ImageTk.PhotoImage(new_img)
-    ing1 = Label(ventana, image=render)
-    ing1.image = render
-    ing1.place(x=10,y=30)
+
 
 def salirAplicacion():
     salir = messagebox.askquestion("Salir", "¿Desea salir?")
@@ -153,7 +145,6 @@ if __name__ == "__main__":
     cargarArchivo=Menu(barraMenu,tearoff=0)
     modificarArchivo=Menu(barraMenu,tearoff=0)
     verReporte=Menu(barraMenu,tearoff=0)
-    verImagen=Menu(barraMenu,tearoff=0)
     salir = Menu(barraMenu,tearoff=0)
 
     cargarArchivo.add_command(label="Abrir",command=cargarArchivos)
@@ -166,7 +157,6 @@ if __name__ == "__main__":
     verReporte.add_separator()
     verReporte.add_command(label="Errores", command=generarErrores)
 
-    verImagen.add_command(label="Ver Imagen", command=imagen)
     
 
     salir.add_command(label="Salir",command=salirAplicacion)
@@ -176,7 +166,6 @@ if __name__ == "__main__":
     barraMenu.add_cascade(label="Archivo",menu=cargarArchivo)
     barraMenu.add_cascade(label="Modificar",menu=modificarArchivo)
     barraMenu.add_cascade(label="Reporte",menu=verReporte)
-    barraMenu.add_cascade(label="Ver",menu=verImagen)
     barraMenu.add_cascade(label="Salir",menu=salir)
 
 

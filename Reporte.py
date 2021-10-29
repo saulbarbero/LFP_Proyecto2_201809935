@@ -9,6 +9,62 @@ class Reporte:
     def __init__(self):
         var=0
 
+    def reporteErroresSintactico(self,lista_errores):
+        
+        f = open('reporteErroresSyntax.html','w')
+
+        text_reporte = '''<!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+                <title>Reporte Errores</title>
+
+                
+                <link rel="stylesheet" href="style.css" />
+            </head>
+
+            <h2>Tabla de Errores Syntax</h2>
+            <div class="table-wrapper">
+                <table class="fl-table">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Cadena</th>
+                        <th>Fila</th>
+                        <th>Columna</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+            '''
+        i = 0
+        size = len(lista_errores)
+        while(i<size):
+            error = lista_errores[i]
+            
+            text_reporte+='''
+                    <tr>
+                        <td>'''+str(i)+'''</td>
+                        <td>'''+str(error.cadena)+'''</td>
+                        <td>'''+str(error.fila)+'''</td>
+                        <td>'''+str(error.columna)+'''</td>
+			        </tr>
+            
+            '''
+            i+=1
+
+        text_reporte+='''
+                        </tbody>
+                </table>
+            </div>
+        '''
+        
+        f.write(text_reporte)
+        f.close()
+        MessageBox.showinfo("Reporte","Reporte creado con Exito") # título, mensaje
+
     def reporteErrores(self,lista_errores):
         
         f = open('reporteErrores.html','w')
