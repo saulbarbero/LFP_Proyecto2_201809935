@@ -18,9 +18,10 @@ from Reservadas import PR
 
 from Reporte import Reporte
 from Clave import Clave
+from Syntax import Syntax
 p = Parser()
 r = Reporte()
-claves = []
+
 
 
 
@@ -80,6 +81,15 @@ def cargarArchivos():
         x = p.lista_errores[j]
         print(x.cadena)
         j+=1
+    print("---------------")
+    print("---------------")
+    print("---------------")
+    print("---------------")
+    s = Syntax(p.tokens)
+    s.Analizar()
+    for e in s.lista_errores:
+        print (e.cadena)
+    print("------------")
                 
 
 def escribir():
@@ -176,7 +186,36 @@ if __name__ == "__main__":
     scrolledtext1.grid(column=0,row=0, padx=10, pady=10)
     scrolledtext2=st.ScrolledText(ventana, width=47, height=20)
     scrolledtext2.grid(column=1,row=0, padx=10, pady=10)
-    scrolledtext2.insert(1.0,"Prueba")
+    #scrolledtext2.insert(1.0,"Prueba")
+    scrolledtext2.insert(tk.INSERT,
+"""\
+Prueba
+Prueba
+Prueba
+Prueba
+Prueba
+Prueba
+Prueba
+Prueba
+Prueba
+Prueba
+Prueba
+Prueba
+Prueba
+Prueba
+Prueba
+Prueba
+Prueba
+Prueba
+Prueba
+Prueba
+Prueba
+Prueba
+Prueba
+Prueba
+Prueba
+
+""")
     scrolledtext2.configure(state='disabled')
 
     ventana.mainloop()
