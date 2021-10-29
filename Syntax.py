@@ -4,13 +4,15 @@ from Error import Error
 class Syntax:
     def __init__(self,tokens):
         self.tokens = tokens
-        self.lista_errores = []
+        self.lista_erroresS = []
         self.n = 0
         self.error = True
 
     def Analizar(self):
         t= Token(PR.SYMBOL,"$",0,0)
         self.tokens.append(t)
+        e = Error("Error sintactico: prueba",0,0)
+        self.lista_erroresS.append(e)
         while self.tokens[self.n].lexema != None:
             if(self.tokens[self.n].lexema=="$"):
                 break
@@ -29,7 +31,7 @@ class Syntax:
             else:
                 self.error = False
                 e = Error("Error sintactico:"+self.tokens[self.n].lexema,0,0)
-                self.lista_errores.append(e)
+                self.lista_erroresS.append(e)
                 break
                 #Error
 
@@ -50,7 +52,7 @@ class Syntax:
         else:
             self.error = False
             e = Error("Error sintactico:"+self.tokens[self.n].lexema,0,0)
-            self.lista_errores.append(e)
+            self.lista_erroresS.append(e)
 
 
         if(self.tokens[self.n].lexema == ","):
@@ -64,5 +66,5 @@ class Syntax:
                 if(self.tokens[self.n].lexema=="$"):
                     self.error = False
                 e = Error("Error sintactico:"+str(token),0,0)
-                self.lista_errores.append(e)
+                self.lista_erroresS.append(e)
         self.n+=1

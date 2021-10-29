@@ -62,34 +62,81 @@ def prueba ():
 
 def cargarArchivos():
     prueba()
-    
+    s = Syntax(p.tokens)
     r.reporteToken(p.tokens)
+    r.reporteErrores(p.lista_errores)
+    r.reporteErroresSintactico(s.lista_erroresS)
+    scrolledtext2=st.ScrolledText(ventana, width=47, height=20)
+    scrolledtext2.grid(column=1,row=0, padx=10, pady=10)
+    aux=""
     i = 0
     size = len(p.tokens)
+    aux+='''
+---TOKENS--
+
+'''
     while(i<size):
+        
         x = p.tokens[i]
+        aux+='''
+'''+str(x.lexema)+'''
+            '''
         print(x.lexema)
         i+=1
-
+    
+    aux+='''
+    ---------------
+    '''
+    aux+='''
+    ---------------
+    '''
+    aux+='''
+    ---------------
+    '''
+    
     print("---------------")
     print("---------------")
-    print("---------------")
-    print("---------------")
+  
     j = 0
     size = len(p.lista_errores)
+    aux+='''
+---ERRORES LEXICO---
+
+'''
     while(j<size):
         x = p.lista_errores[j]
+        aux+='''
+'''+str(x.cadena)+'''
+            '''
         print(x.cadena)
+        
         j+=1
+        aux+='''
+    ---------------
+    '''
+    aux+='''
+    ---------------
+    '''
+    aux+='''
+    ---------------
+    '''
     print("---------------")
     print("---------------")
-    print("---------------")
-    print("---------------")
-    s = Syntax(p.tokens)
+    
+    
     s.Analizar()
-    for e in s.lista_errores:
+    aux+='''
+---ERRORES SINTACTICO---
+
+'''
+    for e in s.lista_erroresS:
+        aux+='''
+'''+str(e.cadena)+'''
+            '''
         print (e.cadena)
     print("------------")
+    scrolledtext2.insert(tk.INSERT,aux)
+    scrolledtext2.configure(state='disabled')
                 
 
 def escribir():
@@ -176,35 +223,7 @@ if __name__ == "__main__":
     scrolledtext2=st.ScrolledText(ventana, width=47, height=20)
     scrolledtext2.grid(column=1,row=0, padx=10, pady=10)
     #scrolledtext2.insert(1.0,"Prueba")
-    scrolledtext2.insert(tk.INSERT,
-"""\
-Prueba
-Prueba
-Prueba
-Prueba
-Prueba
-Prueba
-Prueba
-Prueba
-Prueba
-Prueba
-Prueba
-Prueba
-Prueba
-Prueba
-Prueba
-Prueba
-Prueba
-Prueba
-Prueba
-Prueba
-Prueba
-Prueba
-Prueba
-Prueba
-Prueba
-
-""")
+    
     scrolledtext2.configure(state='disabled')
 
     ventana.mainloop()

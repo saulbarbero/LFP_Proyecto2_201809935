@@ -25,6 +25,8 @@ class Parser:
                 if(x == '(' or x == ')' or x == '=' or x == ';' or x == ',' or x== '{'  or x == '}'  or x == '['  or x == ']' ): #Ignorar
                     t = Token(PR.SYMBOL,x,fila,columna)
                     self.tokens.append(t)
+                    e = Error("Error lexico: "+str(x),fila,columna)
+                    self.lista_errores.append(e)
                     pass  
                 elif(x ==' ' or x == '\r' or x == '\t' ):
                     pass 

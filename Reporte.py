@@ -9,7 +9,7 @@ class Reporte:
     def __init__(self):
         var=0
 
-    def reporteErroresSintactico(self,lista_errores):
+    def reporteErroresSintactico(self,lista_erroresS):
         
         f = open('reporteErroresSyntax.html','w')
 
@@ -40,9 +40,9 @@ class Reporte:
 
             '''
         i = 0
-        size = len(lista_errores)
+        size = len(lista_erroresS)
         while(i<size):
-            error = lista_errores[i]
+            error = lista_erroresS[i]
             
             text_reporte+='''
                     <tr>
