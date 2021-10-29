@@ -7,3 +7,10 @@ class Syntax:
         self.lista_errores = []
         self.n = 0
         self.error = True
+
+
+    def Llamada_funcion(self):
+        self.match(self.tokens[self.n].lexema,"(")
+        self.Parametro()
+        self.match(self.tokens[self.n].lexema,")")
+        self.match(self.tokens[self.n].lexema,";")
