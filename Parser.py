@@ -53,14 +53,15 @@ class Parser:
                             i+=2
                         else:
                             x=0
-                            #Error
+                            e = Error("Error lexico: SYMBOL",fila,columna)
+                            self.lista_errores.append(e)
                     except:
                         x=0
-                        #Error
+                        e = Error("Error lexico: SYMBOL",fila,columna)
+                        self.lista_errores.append(e)
                 else:
-                    #aux+=x
-                    #err = Error(aux,fila,columna)
-                    #self.lista_errores(err)
+                    e = Error("Error lexico: SYMBOL",fila,columna)
+                    self.lista_errores.append(e)
                     aux = ''
                     pass
             elif (estado ==1): #ID 
@@ -106,7 +107,6 @@ class Parser:
                 else:
                     aux+=x
                     t = Token(PR.COMENTARIO,aux,fila,columna)
-                    self.tokens.append(t)
                     estado = 0
                     i-=1
                     columna-=1
@@ -117,7 +117,6 @@ class Parser:
                         aux+=x
                         aux+="'''"
                         t = Token(PR.MULTI,aux,fila,columna)
-                        self.tokens.append(t)
                         estado = 0
                         i+=3
                         columna+=3
